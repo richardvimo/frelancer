@@ -1,0 +1,286 @@
+/* globales */
+:root {
+    --blanco: #fff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris : #757575;  
+    --grisClaro: #dfe9f3; 
+    --fontKrub: 'Krub', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;   /*     convension para trabajar con rem    */ 
+    box-sizing: border-box; /* Hack para BoxModel */
+
+    scroll-snap-type: y mandatory; /* hace que el scrool se detenga  en las diferentes secciones de la página*/
+}
+body {
+    font-size: 16px;    /*     1rem = 10px    */
+    font-family: var(--fontKrub);
+
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+.contenedor {
+    background-color: var(--secundario);
+    max-width: 120rem;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+   .contenedor {
+    border-radius: 1rem;
+   }
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.52);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.52);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.52);
+
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+/* @media (min-width: 768px) {
+   .sombra {
+    width: 90%;
+   }
+} */
+
+.btnContactar {
+    text-decoration: none;
+    display: block;
+    width: 90%;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--blanco);
+    padding: 2rem;
+    background-color: var(--secundario);
+    border-radius: .5rem;
+    font-weight: 700;
+    border: none;
+}
+.btnContactar:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+    font-weight: 700;
+    cursor: pointer;
+}
+.navegacion a:last-of-type {
+    margin-bottom:0;
+}
+
+
+/* Utilidades */
+.w-sm-100 {
+    width: 100%;
+}
+.alinear-derecha {
+    display: flex;
+    justify-content: flex-end;
+    /* margin-top: 4rem; */
+}
+
+/* Tipografia */
+h1 {
+    font-size: 3.8rem; 
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+header span {
+    font-size: 2rem;
+    color: var(--primario); 
+}
+
+
+/* navegacion principal */
+.menu-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+.menu-principal  li {
+    flex-direction: row;
+    list-style-type: none;
+    width: 90%;
+}
+
+@media (min-width: 768px) {
+   .menu-principal {
+    flex-direction: row;
+    justify-content: space-between;
+   }
+   .menu-principal li {
+        max-width: 15rem;
+   }
+}
+
+.menu-principal li a {
+    color: var(--blanco);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 2rem;
+    display: block;
+    text-align: center;
+}
+.menu-principal li a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+    border-radius: .5rem;
+}
+
+
+/* hero */
+.hero {
+    background: url(../img/hero.jpg) no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 35rem;
+    margin-bottom: 2rem;
+}
+.contenido-hero {
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+
+    /* alineamos los elementos */
+    display: flex;   /* por default flex-direction es row */
+    flex-direction: column;  /* cuando cambiamos flex-direction a colum  */
+    align-items: center;     /* con align-items alineamos los elementos horizontalmente */
+    justify-content: center;  /* y con justify-content alineamos verticalmente */
+
+}
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+}
+
+@media (min-width: 768px) {
+   .btnContactar {
+       width: auto;
+   }
+}
+
+.contenido-hero .ubicacion {
+    display: flex; /* por default flex-direction es row */
+    align-items: flex-end; /* por lo tanto con align-items alineamos verticalmente */
+    margin-bottom: 2rem;
+}
+
+/* quiero que se detenga en este punto el snap-scroll */
+.servicios, .menu-principal, .formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+/* Servicios */
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /* 33.3%    33.3%    33.3%
+                                                1fr     1fr      2fr 
+                                                25%     25%      50%   
+                     repeat ( 3, 1fr ) creame tres columnas todas de 1fr */
+        column-gap: 4rem;   /* es como un pading para los grid template */
+    } 
+}
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: 400;
+}
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+@media (min-width: 768px) {
+   .servicio p {
+        text-align: justify;
+   }
+}
+.servicio .iconos {
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+
+    /* centramos los elementos del grid template horizontal y verticalmente */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/* formulario */
+.formulario {
+    background-color: var(--gris);
+    border-radius: 1rem;
+    width: min(60rem, 100%);  /* utiliza el valor mas pequeño y si no toma el 100% */
+    margin: 0 auto;  /* utilizo margin para centrar por que su padre no tiene display flex  o grid
+                      y x q ademas el formulario es un elemento de tipo bloq   */
+    padding: 2rem;
+}
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    color: var(--primario);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-rows: auto auto 20rem; */
+        column-gap: 1rem;
+    }
+    .campo:nth-child(3), .campo:nth-child(4) {
+        grid-column: 1 / 3; /* el campo correo lo posicionamos desde la columna 1 hasta la 3*/
+    }
+}
+.contenedor-campos .campo {
+    margin-bottom: 2rem;
+}
+.campo label {
+    color: var(--blanco);
+    padding-bottom: .5rem;
+    display: block;
+    font-weight: bold;
+}
+.campo input, .campo textarea {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+}
